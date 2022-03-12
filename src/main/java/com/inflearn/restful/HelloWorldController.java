@@ -13,4 +13,10 @@ public class HelloWorldController {
         return "hello-world";
     }
 
+    // bean 추 (HelloWorld Bean 추가)
+    @GetMapping("/hello-world-bean")
+    public HelloWorldBean helloWorldBean(){
+        return new HelloWorldBean("Hello World Bean");
+    }
+
 }
