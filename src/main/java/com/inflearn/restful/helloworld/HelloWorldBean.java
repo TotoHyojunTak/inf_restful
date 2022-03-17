@@ -1,4 +1,4 @@
-package com.inflearn.restful;
+package com.inflearn.restful.helloworld;
 
 // lombok을 사용하여 get, set 를 사용하지 않음
 
