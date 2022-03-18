@@ -21,7 +21,7 @@ public class UserController {
         return service.findAll();
     }
 
-    // GET /users/1 or /users/10
+    // GET /users/1 or /users/10 -> String
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id){
         User user = service.findOne(id);
