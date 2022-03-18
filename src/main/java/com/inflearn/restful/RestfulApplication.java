@@ -20,6 +20,5 @@ public class RestfulApplication {
 		localeResolver.setDefaultLocale(Locale.KOREA);
 
 		return localeResolver;
-
 	}
 }
