@@ -16,7 +16,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 //@JsonIgnoreProperties(value={"password","ssn"})
-@JsonFilter("UserInfo") // 프로그래밍으로 제어하는 Filtering 방법 - 개별 사용자 조회
+//@JsonFilter("UserInfo") // 프로그래밍으로 제어하는 Filtering 방법 - 개별 사용자 조회
+// lec#4-2. Level3 단계의 REST API 구현을 위한 HATEOAS 적용 에서 JsonFilter 주석 처리함
 public class User {
     private Integer id;
 
