@@ -1,17 +1,17 @@
 package com.inflearn.restful.user;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-
 import java.util.Date;
 
 @Data
@@ -21,7 +21,11 @@ import java.util.Date;
 //@JsonFilter("UserInfo") // 프로그래밍으로 제어하는 Filtering 방법 - 개별 사용자 조회
 // lec#4-2. Level3 단계의 REST API 구현을 위한 HATEOAS 적용 에서 JsonFilter 주석 처리함
 @ApiModel(description = "사용자 상세 정보를 위한 도메인 객체")
+@Entity
+@Table(name="TB_USER")
 public class User {
+    @Id
+    @GeneratedValue
     private Integer id;
 
     // 강의 : 유효성 체크를 위한 Validation API 사용
@@ -41,4 +45,12 @@ public class User {
     //@JsonIgnore
     @ApiModelProperty(notes="사용자의 주민번호를 입력해주세요")
     private String ssn;
+
+    public User(int id, String name, Date joinDate, String password, String ssn) {
+        this.id = id;
+        this.name = name;
+        this.joinDate = joinDate;
+        this.password = password;
+        this.ssn = ssn;
+    }
 }

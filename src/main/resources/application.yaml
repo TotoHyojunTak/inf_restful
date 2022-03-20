@@ -3,11 +3,13 @@ server:
 
 logging:
   level:
-    org.springframework: DEBUG
+    org.springframework: INFO
 
 spring:
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: create
   messages:
     basename: messages
   security:
@@ -17,6 +19,8 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
 
 management:
   endpoints:
