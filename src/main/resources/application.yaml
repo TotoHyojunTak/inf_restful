@@ -7,20 +7,22 @@ logging:
 
 spring:
   jpa:
+    open-in-view: false
+    generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   messages:
     basename: messages
   security:
     user:
       name: username
       password: password
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/test
+    username: root
+    password: root
 
 management:
   endpoints:
