@@ -8,6 +8,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -61,5 +62,18 @@ public class UserJpaController {
                 ;
 
         return ResponseEntity.created(location).build();
+    }
+
+    // 게시물 조회를 위한 Post Entity와 User Entity와의 관계 설정
+    // jpa/users/90001/posts
+    @GetMapping("/users/{id}/posts")
+    public List<Post> retrieveAllPostsByUser(@PathVariable int id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if(!user.isPresent()){
+            throw new UserNotFoundException(String.format("ID[%s} not found", id));
+        }
+
+        return user.get().getPosts();
     }
 }
